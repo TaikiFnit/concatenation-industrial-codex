@@ -1396,7 +1396,7 @@ body::after {
         <div class="callout-label">▲ Concatenation 独自の重要事実</div>
         <div class="callout-content">
           <strong>① <code>concatenationcore</code> mod が中継素材を提供</strong>: zinc_casing / quarry_brain / galvanized_iron / boiler / coal_generator / hydraulic_crusher 等。多くの「終端機械」は Mekanism / Thermal / RFTools の素材を <code>concatenationcore</code> パーツで結合する。<br>
-          <strong>② Steel は Create Metallurgy 経路</strong>: pack 内の Steel は <code>createmetallurgy:steel_ingot</code>。Mekanism Metallurgic Infuser の Steel レシピは override により非標準。<br>
+          <strong>② Steel の正準ルートは TFMG の Industrial Blast Furnace + Coke Oven</strong>: <code>tfmg:industrial_blasting</code> レシピで <code>create:crushed_raw_iron</code>（または <code>minecraft:raw_iron</code>）と <code>#tfmg:flux</code> を投入し、 <code>tfmg:molten_steel</code> + <code>tfmg:molten_slag</code> + <code>tfmg:furnace_gas</code> を産出 → Casting Basin で <code>tfmg:steel_ingot</code> 化。<code>createmetallurgy:steel_ingot</code> や <code>mekanism:ingot_steel</code> も <code>forge:ingots/steel</code> タグで統一されており、TFMG ルートが最効率。Mekanism Metallurgic Infuser 経由の Steel レシピは override で非標準。<br>
           <strong>③ Osmium は OreBerries Replanted 経由</strong>: <code>oreberriesreplanted:osmium_oreberry_bush</code> を BotanyPots / 地中で育成。直接 Osmium 鉱石を採掘する標準ルートは制限されている可能性が高い。<br>
           <strong>④ パスウェイで「使えるレシピ」が変わる</strong>: 例えば <code>HighPriestessRecipes.js</code> は Mekanism Universal Cable / Digital Miner / Energized Smelter / Enriched Iron などのレシピを大量に <code>remove</code> している。最初に選ぶ初期パスウェイによって to-do が変わる。
         </div>
@@ -1876,7 +1876,7 @@ body::after {
     <div class="step-eyebrow">M.2 — CHAPTER TWO</div>
     <h1 class="step-title">Steel & <em>Infusion</em><br>鋼と注入の儀式</h1>
     <p class="step-subtitle">
-      Concatenation の <strong>正準 Steel</strong> は <code>createmetallurgy:steel_ingot</code>（Create Metallurgy 経路）。Mekanism の <code>steel_ingot</code> も存在するが、製造には Metallurgic Infuser に加えて kubejs override で <strong>Create Metallurgy の steel_block ×4</strong> や <strong>RFTools の Infused Diamond</strong> 等が要求される。本章では Mekanism 経由の Steel 製造（Enriched Iron → Steel Dust）と、Create Metallurgy の素朴 blast furnace 経由を比較する。
+      Concatenation の <strong>正準 Steel ルートは TFMG の <em>Industrial Blast Furnace</em>（俗称 Industrial Smelter）+ Coke Oven chain</strong>。<code>tfmg:industrial_blasting</code> レシピで <code>create:crushed_raw_iron</code> + <code>#tfmg:flux</code> を投入し <code>tfmg:molten_steel</code> を生成 → Casting Basin で <code>tfmg:steel_ingot</code>。詳細は <strong>VOL.V — TFMG 章 (G.1–G.3)</strong> を参照。本章 (M.2) では <strong>Mekanism Metallurgic Infuser 経由</strong>の Steel ルート（override 後の重い recipe で実用性は低い）と、<strong>forge:ingots/steel タグで統合された複数 mod の Steel が pack 内で互換</strong>であることを記載する。
     </p>
     <div class="step-meta">
       <div class="step-meta-item">
@@ -1910,7 +1910,7 @@ body::after {
         さらに <strong>Enriched Iron 自体も override されている</strong>: 標準 Mekanism の「Iron + Coal を Infuser」ではなく、 <strong>Iron Ingot → Mekanism Crusher → <code>createmetallurgy:iron_dust</code> → Mekanism Enrichment Chamber → enriched_iron</strong> の 2段プロセス。Concatenation 流では <strong>Create Metallurgy の Iron Dust</strong> が中継素材になる。
       </p>
       <p>
-        実用上の選択肢: <strong>① 序盤すぐ Steel が欲しい → Create Metallurgy の Blast Furnace ルート</strong>（Bloomery + 石炭で Steel Ingot 直接）、<strong>② Mekanism 機械が必要なら Infuser ルート</strong>（上記 override 通り素材を集める）、<strong>③ Tinkers Smeltery</strong>（Hermit pathway 一時切替）。Concatenation では用途で使い分けるのが基本。
+        実用上の選択肢: <strong>① <em>正準</em>: TFMG Industrial Blast Furnace ルート</strong>（Coke Oven で Coal Coke を作り、Industrial Blast Furnace に <code>crushed_raw_iron</code> + <code>flux</code> を投入 → <code>molten_steel</code> → Casting Basin で <code>tfmg:steel_ingot</code>。pack のメイン Steel 生産ライン。詳細は VOL.V G.1）、<strong>② 序盤の繋ぎ: Tinkers Smeltery</strong>（Hermit pathway 一時切替で iron + coal の素朴 Steel）、<strong>③ Mekanism 機械が必要な時のみ Infuser ルート</strong>（上記 override 通り createmetallurgy:steel_block + RFTools 等 を集める高コスト recipe）。<strong>forge:ingots/steel タグで統合されている</strong>ため、いずれの mod の Steel Ingot も他 mod の recipe で素材として使える。
       </p>
     </div>
 
@@ -7861,9 +7861,9 @@ body::after {
       <span>Overture</span>
     </div>
     <div class="step-eyebrow">G.0 — VOLUME OVERTURE</div>
-    <h1 class="step-title"><em>VI — The Chariot</em><br>Tinker's Forging: Modern Industry 巻頭言</h1>
+    <h1 class="step-title"><em>VI — The Chariot</em><br>TFMG (Create: The Factory Must Grow) 巻頭言</h1>
     <p class="step-subtitle">
-      <strong>TFMG（Tinker's Forging: Modern Industrialization）</strong>または <strong>Create-style Industrial mod</strong>。Concatenation には <strong>Industrial 系 Create アドオン</strong>が複数同梱されている。<strong>Coke Oven / Pumpjack / Distillery / Diesel Generator / Industrial Smelter</strong> の<strong>大型 multiblock</strong>で、Mekanism よりも<strong>クラシックなIE/IC2系の工業</strong>を提供する。
+      <strong>TFMG（<em>Create: The Factory Must Grow</em>、CurseForge slug <code>create-industry</code>、Modrinth slug <code>create-tfmg</code>、Author: Dr_Mango_Tea）</strong>は Create アドオンの大型工業 mod。<strong>Coke Oven / Industrial Blast Furnace / Pumpjack / Distillation Tower / Diesel Engine / Industrial Mixer</strong> など大型 multiblock を提供。<strong>Concatenation の正準 Steel 生産経路</strong>として機能する（M.2 参照）。Mekanism よりも<strong>クラシックな化学・冶金系</strong>の手触り。
     </p>
     <div class="step-meta">
       <div class="step-meta-item">
@@ -7988,7 +7988,7 @@ body::after {
     <div class="step-eyebrow">G.1 — CHAPTER ONE</div>
     <h1 class="step-title">Coke & <em>Blast Furnace</em><br>煤と高炉</h1>
     <p class="step-subtitle">
-      TFMG の<strong>序盤主力ライン</strong>。<strong>Coke Oven</strong> で Coal → <strong>Coke + Creosote Oil</strong>、<strong>Blast Furnace</strong> で Iron + Coke → <strong>Steel</strong>。Mekanism Infuser ルートより<strong>並列処理しやすい</strong>のが大型 multiblock の利点。Concatenation 中盤の Steel 大量生産はこの章で完成。
+      Concatenation の<strong>正準 Steel 生産ライン</strong>。<strong>Coke Oven</strong>（<code>tfmg:coking</code>）で Coal → <code>tfmg:coal_coke</code> + Creosote、<strong>Blast Stove</strong>（<code>tfmg:hot_blast</code>）で Coal Coke + Air → Hot Air、 <strong>Industrial Blast Furnace</strong> 多ブロック（<code>tfmg:industrial_blasting</code>）で Crushed Raw Iron + Flux + Hot Air → <code>tfmg:molten_steel</code>、 <strong>Casting Basin</strong>（<code>tfmg:casting</code>）で Molten Steel 144mB → Steel Ingot ×1。Mekanism Infuser ルートより<strong>大量並列処理向け</strong>で、Concatenation 中盤の Steel/合金大量生産はこの章で完成する。
     </p>
     <div class="step-meta">
       <div class="step-meta-item">
@@ -8016,7 +8016,7 @@ body::after {
 
     <div class="prose">
       <p>
-        <strong>Coke Oven</strong> は <strong>3×3×3 の multiblock</strong>。<strong>Coke Brick</strong> で外殻を組み、内側を空にする。<strong>Coal を投入すると 1〜2 分で Coke + Creosote Oil（液体）</strong>が生成される。Concatenation の <strong>Coke は Mekanism Steel ライン / TFMG Blast Furnace / Pyrolyzer 副産物との競合</strong>でもあるが、<strong>並列処理性能では Coke Oven が最強</strong>。
+        <strong>Coke Oven</strong> は <strong>3×3×3 の multiblock</strong>。<strong>Coke Brick</strong>（<code>tfmg:coke_brick</code>）で外殻を組み、 <strong>Coal を投入すると 1200 ticks（60 秒）で <code>tfmg:coal_coke</code> ×1 + <code>tfmg:creosote</code> 1mB + <code>tfmg:carbon_dioxide</code> 30mB</strong> が生成される（<code>tfmg:coking</code> recipe）。Coal Coke は次工程の <strong>Blast Stove の燃料 / Industrial Blast Furnace の Flux 系統</strong>として使う。Concatenation の Coke は <strong>Thermal Pyrolyzer の副産物</strong>とも合流するが、並列性は Coke Oven が圧倒的。
       </p>
     </div>
 
@@ -8033,10 +8033,9 @@ body::after {
             <div class="recipe-name">Coke Oven</div>
             <div class="recipe-name-jp">コークス炉</div>
             <div class="recipe-desc">
-              Coal → Coke + Creosote。多面に並列でフレーム配置可。<br>
-              <strong>Coke Brick × 26 + Hopper × 1</strong>
+              <code>tfmg:coking</code>: 1× minecraft:coal → 1× tfmg:coal_coke + 1mB tfmg:creosote + 30mB CO₂、1200 ticks。3×3×3 multiblock。
             </div>
-            <span class="recipe-link">TFMG / Create Wiki</span>
+            <span class="recipe-link">CurseForge</span>
           </div>
         </a>
       </div>
@@ -8050,13 +8049,12 @@ body::after {
             </div>
           </div>
           <div class="recipe-info">
-            <div class="recipe-name">Blast Furnace</div>
-            <div class="recipe-name-jp">高炉</div>
+            <div class="recipe-name">Industrial Blast Furnace</div>
+            <div class="recipe-name-jp">工業高炉</div>
             <div class="recipe-desc">
-              3×3×3 multiblock。Iron + Coke で Steel 量産。<br>
-              <strong>Blast Brick × 26 + Hopper × 1</strong>
+              <code>tfmg:industrial_blasting</code>: <code>create:crushed_raw_iron</code> + <code>#tfmg:flux</code> → 144mB tfmg:molten_steel + 144mB molten_slag + 200mB furnace_gas。Hot Air を Blast Stove から供給。Casting Basin で molten_steel 144mB → tfmg:steel_ingot ×1。
             </div>
-            <span class="recipe-link">TFMG / Create Wiki</span>
+            <span class="recipe-link">CurseForge</span>
           </div>
         </a>
       </div>
