@@ -1244,9 +1244,10 @@ body::after {
     <p class="hero-desc">
       これは<strong>Concatenation modpack（1.20.1 Forge）</strong>の工業系mod群を、<br>
       ゼロから「The World」に至るまで導くための導書である。<br><br>
-      九つのタロット・パスウェイのうち、技術の道（Hierophant）を選ぶ者へ。<br>
+      ゲーム序盤に選ぶ <strong>四つの初期パスウェイ</strong>のひとつ、<strong>技術の道（Hierophant）</strong>を選ぶ者へ。<br>
+      （初期分岐の先には Hermit / Magician / Chariot / High Priestess / Star / Strength / Prudence / Temperance など派生タロットが連なる）<br>
       Mekanism より始め、AE2、Industrial Foregoing、Thermal、<br>
-      RFTools、TFMG（Create: Industry スラッグ）、Integrated Dynamics、そして Create の深奥へと至る。
+      RFTools、TFMG（CurseForge slug は <code>create-industry</code>）、Integrated Dynamics、そして Create の深奥へと至る。
     </p>
   </div>
 
@@ -1365,8 +1366,17 @@ body::after {
         各章には <strong>レシピ画像（Wiki/CurseForge への外部リンク）</strong>、<strong>具体的なクラフト手順</strong>、<strong>Tips（◆）</strong>、<strong>注意（▲）</strong>、<strong>秘伝（✦）</strong> の形で情報が積層されている。
       </p>
       <p>
-        Concatenation は<strong>レシピ改変が極端に多い pack</strong> である。本書の手順は標準 mod の挙動と Concatenation 独自の改変を統合したものだが、<strong>必ず in-game の EMI/JEI で実レシピを確認</strong>すること。Wiki に書かれているレシピが、Concatenation 内では別物に変わっていることが頻繁にある。
+        Concatenation は<strong>レシピ改変が極端に多い pack</strong> である。<code>kubejs/server_scripts/</code> 配下の <strong>2300+ レシピ override</strong>（HierophantRecipes.js / HighPriestessRecipes.js / UniversalRecipes.js 他、計 ~12,000 行）により、各 mod の標準レシピは大きく書き換えられている。本書の手順は概念図として読み、<strong>必ず in-game の EMI で実レシピを確認</strong>すること。
       </p>
+      <div class="callout callout-warning" style="margin-top: 1rem;">
+        <div class="callout-label">▲ Concatenation 独自の重要事実</div>
+        <div class="callout-content">
+          <strong>① <code>concatenationcore</code> mod が中継素材を提供</strong>: zinc_casing / quarry_brain / galvanized_iron / boiler / coal_generator / hydraulic_crusher 等。多くの「終端機械」は Mekanism / Thermal / RFTools の素材を <code>concatenationcore</code> パーツで結合する。<br>
+          <strong>② Steel は Create Metallurgy 経路</strong>: pack 内の Steel は <code>createmetallurgy:steel_ingot</code>。Mekanism Metallurgic Infuser の Steel レシピは override により非標準。<br>
+          <strong>③ Osmium は OreBerries Replanted 経由</strong>: <code>oreberriesreplanted:osmium_oreberry_bush</code> を BotanyPots / 地中で育成。直接 Osmium 鉱石を採掘する標準ルートは制限されている可能性が高い。<br>
+          <strong>④ パスウェイで「使えるレシピ」が変わる</strong>: 例えば <code>HighPriestessRecipes.js</code> は Mekanism Universal Cable / Digital Miner / Energized Smelter / Enriched Iron などのレシピを大量に <code>remove</code> している。最初に選ぶ初期パスウェイによって to-do が変わる。
+        </div>
+      </div>
       <p>
         画像は各 mod の公式 Wiki / Fandom / Modrinth / CurseForge へのリンクとして表示される。画像クリックでオリジナルソースへ飛べる。
       </p>
@@ -1641,10 +1651,10 @@ body::after {
 
     <div class="prose">
       <p>
-        Osmium は Mekanism の<strong>基礎金属</strong>であり、ほぼすべての機械のフレームに使われる。Concatenation では <strong>Mekanism 鉱石生成は無効化</strong>されているが、<strong>Thermal の鉱石として Y=10〜60 で生成</strong>される。<code>osmium_ore</code> タグで EMI 検索可能。
+        Concatenation では <strong>Osmium の取得経路が独特</strong>である。kubejs の HierophantRecipes / UniversalRecipes は <code>oreberriesreplanted:osmium_oreberry_bush</code>（OreBerries Replanted mod の灌木として育成可）を主要供給源として組み込んでいる。<strong>序盤は Oreberry の自動収穫</strong>から始まり、量が必要になったら Y=10〜60 の通常鉱石採掘や Quarry Plus に移行する流れが pack 想定の進行。
       </p>
       <p>
-        ピッケル要件は <strong>鉄以上</strong>。原鉱石（<code>raw_osmium</code>）からドロップし、炉で焼いて Osmium Ingot になる。倍化したいなら、まず Tinkers smeltery（Hermit pathway 一時切替）で 2× にしてから精錬してもよい。
+        ピッケル要件は <strong>鉄以上</strong>。原鉱石（<code>raw_osmium</code>）からドロップし、炉で焼いて Osmium Ingot になる。倍化したいなら、まず Mekanism Crusher / Tinkers smeltery（Hermit pathway 一時切替）で 2× にしてから精錬してもよい。
       </p>
     </div>
 
@@ -1663,7 +1673,7 @@ body::after {
             <div class="recipe-name">Osmium Ingot</div>
             <div class="recipe-name-jp">オスミウム塊</div>
             <div class="recipe-desc">
-              Mekanism 機械の中核素材。Y=10–60 の Thermal 鉱石として生成。
+              Mekanism 機械の中核素材。Concatenation では <strong>OreBerries Replanted の osmium_oreberry_bush</strong> 育成が主供給源。鉱石採掘は補助。
             </div>
             <span class="recipe-link">Mekanism Wiki</span>
           </div>
@@ -1842,7 +1852,7 @@ body::after {
     <div class="step-eyebrow">M.2 — CHAPTER TWO</div>
     <h1 class="step-title">Steel & <em>Infusion</em><br>鋼と注入の儀式</h1>
     <p class="step-subtitle">
-      <strong>Metallurgic Infuser</strong> は Mekanism の<strong>第二の主機械</strong>であり、Iron に Carbon（石炭）を注入して Steel に変える。Concatenation では Steel が複数 mod 横断の<strong>核心素材</strong>であり、Mekanism / Tinkers / TFMG / Thermal の各経路がある。本章ではすべて解説する。
+      Concatenation の <strong>正準 Steel</strong> は <code>createmetallurgy:steel_ingot</code>（Create Metallurgy 経路）。Mekanism の <code>steel_ingot</code> も存在するが、製造には Metallurgic Infuser に加えて kubejs override で <strong>Create Metallurgy の steel_block ×4</strong> や <strong>RFTools の Infused Diamond</strong> 等が要求される。本章では Mekanism 経由の Steel 製造（Enriched Iron → Steel Dust）と、Create Metallurgy の素朴 blast furnace 経由を比較する。
     </p>
     <div class="step-meta">
       <div class="step-meta-item">
@@ -1870,10 +1880,13 @@ body::after {
 
     <div class="prose">
       <p>
-        <strong>Metallurgic Infuser</strong> は Mekanism の<strong>「素材変換」の象徴</strong>たる機械。Iron Ingot に Carbon を注入して Enriched Iron を作り、もう一度注入して Steel Dust にする。Concatenation では <strong>Supreme Machine Frame</strong> が必須なので、純 Mekanism ルートを取る場合はこのフレームを先に作る必要がある。
+        <strong>Metallurgic Infuser</strong> は Mekanism の<strong>「素材変換」の象徴</strong>。<strong>Concatenation の override (HighPriestessRecipes.js)</strong> ではレシピが大幅変更されており、概ね <strong>Create Metallurgy の steel_block ×4 + RFTools Infused Diamond + Concatenation higher_circuit + Osmium ingot + Mekanism Steel Casing</strong> の組み合わせが要求される。EMI で正確な現行レシピを確認すること。
       </p>
       <p>
-        ただし Concatenation の利点として、<strong>初期の Steel は Tinkers smeltery で作る方が早い</strong>場合が多い。Pathway を一時的に Hermit に切り替え、Smeltery で Iron + Coal → Steel を作ってしまうルートも有効。<strong>Mekanism 機械が必要な時だけ Mekanism ルートを使う</strong>のが Concatenation 流。
+        さらに <strong>Enriched Iron 自体も override されている</strong>: 標準 Mekanism の「Iron + Coal を Infuser」ではなく、 <strong>Iron Ingot → Mekanism Crusher → <code>createmetallurgy:iron_dust</code> → Mekanism Enrichment Chamber → enriched_iron</strong> の 2段プロセス。Concatenation 流では <strong>Create Metallurgy の Iron Dust</strong> が中継素材になる。
+      </p>
+      <p>
+        実用上の選択肢: <strong>① 序盤すぐ Steel が欲しい → Create Metallurgy の Blast Furnace ルート</strong>（Bloomery + 石炭で Steel Ingot 直接）、<strong>② Mekanism 機械が必要なら Infuser ルート</strong>（上記 override 通り素材を集める）、<strong>③ Tinkers Smeltery</strong>（Hermit pathway 一時切替）。Concatenation では用途で使い分けるのが基本。
       </p>
     </div>
 
@@ -1892,8 +1905,7 @@ body::after {
             <div class="recipe-name">Metallurgic Infuser</div>
             <div class="recipe-name-jp">冶金注入器</div>
             <div class="recipe-desc">
-              <strong>Iron×4 + Furnace×2 + Osmium×1 + Redstone×2</strong><br>
-              ※ Concatenation では Supreme Machine Frame 必須に変更されている可能性あり、要 EMI 確認
+              <strong>Concatenation override</strong>: createmetallurgy:steel_block ×4 + rftoolsbase:infused_diamond + #concatenation:higher_circuits + mekanism:ingot_osmium + mekanism:steel_casing。標準 Mekanism wiki のレシピは適用されない。
             </div>
             <span class="recipe-link">Mekanism Wiki</span>
           </div>
@@ -1912,7 +1924,7 @@ body::after {
             <div class="recipe-name">Enriched Iron</div>
             <div class="recipe-name-jp">濃縮鉄</div>
             <div class="recipe-desc">
-              Infuser に Iron + Carbon を入れて生成。Steel への中間素材。
+              Concatenation の override: Iron Ingot → Mekanism Crusher → createmetallurgy:iron_dust → Mekanism Enrichment Chamber で生成。Infuser ではなく Enrichment Chamber を使う点に注意。
             </div>
             <span class="recipe-link">Mekanism Wiki</span>
           </div>
