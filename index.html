@@ -1207,6 +1207,17 @@ body::after {
     </div>
 
     <div class="nav-section">
+      <div class="nav-section-title">VIII — The Hermit (Aux)</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link" data-page="hm-overview"><span class="nav-num">H.0</span>Hermit Path Tools 巻頭</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="hm-overview"><span class="nav-num">H.1</span>Tinkers 小技</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="hm-overview"><span class="nav-num">H.2</span>PneumaticCraft</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="hm-overview"><span class="nav-num">H.3</span>Solar Flux + Quarry+</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="hm-overview"><span class="nav-num">H.4</span>Perdition Dimension</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
       <div class="nav-section-title">XXI — The World</div>
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link" data-page="finale"><span class="nav-num">Ω</span>完結 — The World</a></li>
@@ -1346,6 +1357,19 @@ body::after {
         <div class="arcana-card-meta">
           <span class="tier-badge">T1—T5</span>
           <span>4 STEPS</span>
+        </div>
+      </div>
+
+      <div class="arcana-card" onclick="navigateTo('hm-overview')">
+        <div class="arcana-card-num">VOL. VIII</div>
+        <div class="arcana-card-title">Hermit Path Tools</div>
+        <div class="arcana-card-jp">未踏の小径</div>
+        <p class="arcana-card-desc">
+          Tinkers 小技 / PneumaticCraft / Solar Flux Reborn / Quarry Plus / Perdition。Hierophant の主軸を補完する横断章。
+        </p>
+        <div class="arcana-card-meta">
+          <span class="tier-badge">T1—T5</span>
+          <span>5 SECTIONS</span>
         </div>
       </div>
 
@@ -10968,8 +10992,385 @@ body::after {
       <div class="step-nav-direction">← 戻る</div>
       <div class="step-nav-title">L.3 — Pretty Pipes</div>
     </a>
-    <a class="step-nav-btn next" data-page="finale" style="border-color:var(--gold);background:rgba(201,165,92,0.05)">
+    <a class="step-nav-btn next" data-page="hm-overview" style="border-color:var(--gold);background:rgba(201,165,92,0.05)">
       <div class="step-nav-direction" style="color:var(--gold-bright)">✦ Volume VII 完結</div>
+      <div class="step-nav-title">続巻：VIII — Hermit Path Tools</div>
+    </a>
+  </div>
+</section>
+
+<!-- ============== PAGE: HM-OVERVIEW ============== -->
+<section class="page" id="hm-overview">
+  <div class="step-header">
+    <div class="step-breadcrumb">
+      <a data-page="overview">Overture</a>
+      <span class="step-breadcrumb-sep">/</span>
+      <span>Volume VIII — Hermit Path Tools</span>
+    </div>
+    <div class="step-eyebrow">H.0 — VOLUME OVERTURE</div>
+    <h1 class="step-title"><em>VIII — The Hermit (Aux)</em><br>未踏の小径</h1>
+    <p class="step-subtitle">
+      Hierophant pathway 単独では触れない補助 mod を 1 巻にまとめる。<strong>Tinkers Construct</strong> の advanced 小技、<strong>PneumaticCraft Repressurized</strong> の空気圧工業、<strong>Solar Flux Reborn</strong> の太陽光発電、<strong>Quarry Plus (Additional Enchanted Miner)</strong> の自動採掘、<strong>Perdition</strong> 次元 — Hierophant の主軸に並走する横断章。深掘りはせず、Concatenation 上の使いどころに絞る。
+    </p>
+    <div class="step-meta">
+      <div class="step-meta-item">
+        <div class="step-meta-label">対象</div>
+        <div class="step-meta-value">Hermit / Aux</div>
+      </div>
+      <div class="step-meta-item">
+        <div class="step-meta-label">構成</div>
+        <div class="step-meta-value">5 セクション</div>
+      </div>
+      <div class="step-meta-item">
+        <div class="step-meta-label">推定所要</div>
+        <div class="step-meta-value">読了 10–15 分 / 実装 数時間</div>
+      </div>
+      <div class="step-meta-item">
+        <div class="step-meta-label">前提</div>
+        <div class="step-meta-value">本書 VOL.I–VII 既読</div>
+      </div>
+    </div>
+    <button class="complete-btn" data-step="hm-overview">この章を完了</button>
+  </div>
+
+  <div class="content-block" id="hm-tinkers">
+    <h2 class="block-title"><span class="block-num">H.1</span>Tinkers Construct — 小技集<span class="block-title-jp">— Hermit Pathway Core —</span></h2>
+    <div class="prose">
+      <p>
+        Tinkers の基礎（Smeltery / Tool Forge / Modifier）は既知前提。Concatenation で<strong>「いつ Tinkers を使うか」</strong>に絞る。
+      </p>
+    </div>
+    <table class="spec-table" style="margin-top:1rem">
+      <thead><tr><th>場面</th><th>Tinkers の使いどころ</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>序盤 Steel</td>
+          <td>Smeltery で Iron + Coal → Steel Ingot</td>
+          <td>Mekanism Infuser ルート より圧倒的に早い。Hermit に一時切替で OK</td>
+        </tr>
+        <tr>
+          <td>2× ore doubling</td>
+          <td>Smeltery で raw_ore → 2 ingot</td>
+          <td>Mekanism Crusher 解放前のブースト。Concatenation の oreberry と組合せ最強</td>
+        </tr>
+        <tr>
+          <td>武器/工具</td>
+          <td>Cleaver / Crossbow / Pickaxe (modifier 自由)</td>
+          <td>後半は Mekasuit に置換するが、序盤〜中盤は Tinkers が王者</td>
+        </tr>
+        <tr>
+          <td>合金</td>
+          <td>Manyullyn / Hepatizon (TConstruct alloy)</td>
+          <td>Concatenation の <code>tconstruct:cobalt_ingot</code> は TFMG / createmetallurgy の素材と<strong>kubejs で相互変換可能</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="recipe-gallery" style="margin-top:1rem">
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/tinkers-construct" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/tinkers/smeltery_melter.png" alt="Smeltery Melter" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Smeltery Melter</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Smeltery Melter</div>
+            <div class="recipe-name-jp">焼成炉</div>
+            <div class="recipe-desc">Steel/合金作成の中核。Hermit pathway を一時 Active にすれば Hierophant ルートでも使える。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/tinkers-construct" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/tinkers/seared_brick.png" alt="Seared Brick" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Seared Brick</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Seared Brick</div>
+            <div class="recipe-name-jp">焼成煉瓦</div>
+            <div class="recipe-desc">Smeltery 構造材。Y=128 Lava lake を見つけたら大量生産する。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="callout callout-arcane" style="margin-top:1rem">
+      <div class="callout-label">✦ ARCANE — Tinkers と Concatenation の混血</div>
+      <div class="callout-content">
+        Concatenation では <strong>Hermit pathway を一時切替</strong>することで Tinkers レシピが解放される。<strong>序盤 Steel が必要なときだけ Hermit に切替 → Smeltery で大量生産 → Hierophant に戻す</strong>のが上級プレイヤーの動き。kubejs の <code>HermitRecipes.js</code> で Tinkers の各レシピが大幅 override されているため、<strong>EMI で「Hermit なら作れる」が「Hierophant では作れない」アイテム</strong>を見極めること。
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block" id="hm-pneumaticcraft">
+    <h2 class="block-title"><span class="block-num">H.2</span>PneumaticCraft Repressurized<span class="block-title-jp">— 空気圧の工業 —</span></h2>
+    <div class="prose">
+      <p>
+        <strong>PneumaticCraft</strong> は<strong>空気圧（Air Pressure）</strong>を一次資源とする独自工業 mod。Mekanism / Thermal とは独立した経済を構築でき、<strong>圧縮鉄 / プログラマブルドローン / 飛行装備</strong>などのユニーク機能を持つ。Concatenation では <strong>Hierophant 終盤の自動化補助</strong>として頻出。
+      </p>
+      <p>
+        中核ループ: <strong>Air Compressor</strong>（石炭・木材で空気圧生成）→ <strong>Pressure Tube</strong> で配管 → <strong>Pressure Chamber</strong>（圧縮鉄や Plastic Sheet 等の合成）→ 高圧装備（<strong>Pneumatic Helmet/Chestplate</strong>、<strong>Drone</strong>、<strong>Aerial Interface</strong>）。
+      </p>
+    </div>
+    <div class="recipe-gallery" style="margin-top:1rem">
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/pneumaticcraft-repressurized" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/pneumaticcraft/air_compressor.png" alt="Air Compressor" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Air Compressor</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Air Compressor</div>
+            <div class="recipe-name-jp">空気圧縮機</div>
+            <div class="recipe-desc">PneumaticCraft の起点。燃料を燃やして空気圧を Pressure Tube に流す。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/pneumaticcraft-repressurized" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/pneumaticcraft/pressure_chamber_valve.png" alt="Pressure Chamber Valve" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Pressure Chamber Valve</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Pressure Chamber Valve</div>
+            <div class="recipe-name-jp">圧力室バルブ</div>
+            <div class="recipe-desc">5×5×5 multiblock の入出力ポート。圧力閾値を超えるとレシピ実行。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/pneumaticcraft-repressurized" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/pneumaticcraft/programming_puzzle.png" alt="Programming Puzzle" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Programming Puzzle</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Programming Puzzle</div>
+            <div class="recipe-name-jp">プログラム要素</div>
+            <div class="recipe-desc">Drone 制御の脳。GPS Tool + Programming Puzzle で「ここの Chest から取って、あそこに置く」を組める。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/pneumaticcraft-repressurized" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/pneumaticcraft/aerial_interface.png" alt="Aerial Interface" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Aerial Interface</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Aerial Interface</div>
+            <div class="recipe-name-jp">空中インタフェース</div>
+            <div class="recipe-desc">プレイヤーのインベントリに無線アクセスできる block。AE2 / Pretty Pipes と組むと「歩いてるだけで物資が補充される」体験が作れる。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="callout callout-tip" style="margin-top:1rem">
+      <div class="callout-label">◆ TIP — Concatenation での位置づけ</div>
+      <div class="callout-content">
+        PneumaticCraft は <strong>Mekanism / Thermal の代替ではなく補完</strong>。<strong>① Aerial Interface でモバイル補給ライン</strong>、<strong>② Drone で IF Mob Farm の自動巡回</strong>、<strong>③ Pneumatic Chestplate (UV Light Box upgrade) で Mekasuit までの繋ぎ</strong>などが Hierophant 流の使い方。
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block" id="hm-solarflux-quarry">
+    <h2 class="block-title"><span class="block-num">H.3</span>Solar Flux Reborn + Quarry Plus<span class="block-title-jp">— 補助電源 と 自動採掘 —</span></h2>
+    <div class="prose">
+      <p>
+        Concatenation で <strong>Powah は不在</strong>のため、<strong>passive 太陽光発電</strong>枠は <strong>Solar Flux Reborn</strong> が担当する。Tier 1〜6 の <code>photovoltaic_cell_N</code> を装着した <strong>Solar Panel</strong> が屋根/砂漠に並ぶ景観は Concatenation 中盤以降の風物詩。<strong>Low Light Upgrade</strong>（夜間出力）と <strong>Dispersive Upgrade</strong>（範囲送電）が定番。
+      </p>
+      <p>
+        <strong>Quarry Plus（公式名 Additional Enchanted Miner）</strong>は <code>concatenationcore</code> mod が改造した自動採掘装置。<strong>Quarry 本体は HierophantRecipes.js で <code>concatenationcore:zinc_casing</code> + <code>thermal:drill_head</code> + <code>concatenationcore:quarry_brain</code></strong> の組合せ recipe に変更されており、<strong>Mekanism + Thermal + Create + concatenationcore</strong> の 4 mod 横断クラフトが必須。
+      </p>
+    </div>
+    <div class="recipe-gallery" style="margin-top:1rem">
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/solar-flux-reborn" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/solarflux/cell_1.png" alt="Photovoltaic Cell I" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Photovoltaic Cell I</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Photovoltaic Cell I</div>
+            <div class="recipe-name-jp">光電池 I</div>
+            <div class="recipe-desc">Tier 1（最低出力）。序盤 base の屋根に 8 枚並べれば Heat Generator 1 台分。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/solar-flux-reborn" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/solarflux/cell_3.png" alt="Photovoltaic Cell III" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Photovoltaic Cell III</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Photovoltaic Cell III</div>
+            <div class="recipe-name-jp">光電池 III</div>
+            <div class="recipe-desc">中盤主力。Compression Dynamo と並走で base の常時電源を担う。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/solar-flux-reborn" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/solarflux/cell_6.png" alt="Photovoltaic Cell VI" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Photovoltaic Cell VI</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Photovoltaic Cell VI</div>
+            <div class="recipe-name-jp">光電池 VI</div>
+            <div class="recipe-desc">最上位。1 枚で数千 FE/t。Mekanism Fission Reactor を持たない base の終端電源候補。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/additional-enchanted-miner" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/quarryplus/mini_quarry.png" alt="Mini Quarry" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Mini Quarry</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Mini Quarry</div>
+            <div class="recipe-name-jp">小型採掘機</div>
+            <div class="recipe-desc">序盤の自動採掘。Marker で範囲を囲うだけで Y=-64 まで掘る。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://modrinth.com/mod/additional-enchanted-miner" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/quarryplus/marker.png" alt="Marker" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Marker</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Marker</div>
+            <div class="recipe-name-jp">マーカー</div>
+            <div class="recipe-desc">Quarry の範囲指定。2 つ置けば直方体エリアが定まる。Flex Marker は曲線対応。</div>
+            <span class="recipe-link">Modrinth</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="callout callout-warning" style="margin-top:1rem">
+      <div class="callout-label">▲ Solid Fuel Quarry の override</div>
+      <div class="callout-content">
+        標準 Quarry+ の <code>solid_fuel_quarry</code> と <code>workbench</code> は <strong>HierophantRecipes.js が remove + 再定義</strong>している:<br>
+        <code>solid_fuel_quarry = concatenationcore:zinc_casing ×4 + concatenationcore:boiler ×1 + thermal:drill_head ×4 + concatenationcore:quarry_brain ×1</code><br>
+        Wiki の素朴な Quarry recipe は通用しないので、必ず EMI で確認。
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block" id="hm-perdition">
+    <h2 class="block-title"><span class="block-num">H.4</span>Perdition Dimension<span class="block-title-jp">— 煉獄と Dis の道 —</span></h2>
+    <div class="prose">
+      <p>
+        <strong>Perdition</strong> は Mitemi / ReversTeam 製の<strong>新次元 mod</strong>。<strong>Purgatory（煉獄）</strong>と <strong>Dis（地獄都市）</strong>の 2 階層を追加し、<strong>Corruptite Ore</strong>、<strong>Dis Gem</strong>、<strong>Halcyon</strong>、<strong>Limbo Berries</strong> 等の独自素材を提供する。kubejs の <code>HierophantRecipes.js</code> でも <code>perdition:marmor_elevated</code>、<code>perdition:dis</code> などを remove + 再定義しており、<strong>Concatenation 終盤の素材源</strong>として組み込まれている。
+      </p>
+      <p>
+        進入は <strong>地下深部（Y=-64 付近）</strong>で見つかる構造物（kawatii の質問にあった「unholy underground structure」）から、<strong>void hole に飛び込む</strong>と Purgatory に転移。Purgatory 内で <strong>Gaol of Heretics</strong> を見つけ、<strong>Y=128 まで登って Corruptite Ore を採掘</strong>するのが王道。
+      </p>
+    </div>
+    <div class="recipe-gallery" style="margin-top:1rem">
+      <div class="recipe-card">
+        <a href="https://www.curseforge.com/minecraft/mc-mods/perdition" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/perdition/corruptite.png" alt="Corruptite" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Corruptite</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Corruptite</div>
+            <div class="recipe-name-jp">堕落の鉱石</div>
+            <div class="recipe-desc">Purgatory 限定鉱石。Concatenation の終盤レシピ chain に組み込まれている。Dowsing Rod 採掘推奨。</div>
+            <span class="recipe-link">CurseForge</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://www.curseforge.com/minecraft/mc-mods/perdition" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/perdition/disgem_crown.png" alt="Dis Gem Crown" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Dis Gem Crown</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Dis Gem Crown</div>
+            <div class="recipe-name-jp">Dis の冠</div>
+            <div class="recipe-desc">Dis 都市の最上位アイテム。Concatenation 終盤の装飾装備。</div>
+            <span class="recipe-link">CurseForge</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://www.curseforge.com/minecraft/mc-mods/perdition" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/perdition/dis_wand.png" alt="Dis Wand" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Dis Wand</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Dis Wand</div>
+            <div class="recipe-name-jp">Dis の杖</div>
+            <div class="recipe-desc">Perdition 内のキー機構を起動する杖。Scintillating Marble 構造の解放に使う。</div>
+            <span class="recipe-link">CurseForge</span>
+          </div>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="https://www.curseforge.com/minecraft/mc-mods/perdition" target="_blank" style="text-decoration:none;color:inherit">
+          <div class="recipe-image">
+            <img src="images/perdition/planeswalker.png" alt="Planeswalker" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="recipe-image-placeholder" style="display:none">Planeswalker</div>
+          </div>
+          <div class="recipe-info">
+            <div class="recipe-name">Planeswalker</div>
+            <div class="recipe-name-jp">次元渡り</div>
+            <div class="recipe-desc">次元間移動アイテム。Overworld ↔ Purgatory の往復に使用。</div>
+            <span class="recipe-link">CurseForge</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="callout callout-warning" style="margin-top:1rem">
+      <div class="callout-label">▲ 進入準備チェックリスト</div>
+      <div class="callout-content">
+        ◆ <strong>Slow Falling potion / Feather Falling boots</strong>（void hole への落下が必要）<br>
+        ◆ <strong>Respawn Anchor / Bed</strong>（Purgatory 内で死亡時のリスポーン）<br>
+        ◆ <strong>Night Vision</strong>（Purgatory 全域は暗い）<br>
+        ◆ <strong>建築ブロック 5+ stack</strong>（Y=128 まで登るための柱）<br>
+        ◆ <strong>Mekasuit / Pneumatic Helmet</strong>（high-tier 装備推奨、Dis の難易度は高い）
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-arcane" style="margin-top:1.5rem">
+    <div class="callout-label">✦ ARCANE — 補助章を主軸にどう編み込むか</div>
+    <div class="callout-content">
+      これら 5 mod は単独では脇役だが、<strong>Hierophant の主軸 (Mekanism / AE2 / IF / Thermal / RFTools / TFMG / ID / Create) の足りないところを埋める</strong>役目を持つ。<br>
+      ◆ <strong>Steel が早期に欲しい</strong> → Tinkers Smeltery<br>
+      ◆ <strong>Drone で巡回タスクを自動化</strong> → PneumaticCraft<br>
+      ◆ <strong>passive 電源</strong> → Solar Flux Reborn<br>
+      ◆ <strong>地形支配の量</strong> → Quarry Plus（concatenationcore レシピで作る）<br>
+      ◆ <strong>終盤鉱石源</strong> → Perdition の Corruptite / Dis Gem<br><br>
+      Concatenation の達人は<strong>「メイン path で詰まったら補助 mod に伸ばす」</strong>動きを自然に取る。
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <a class="step-nav-btn" data-page="log-step-4">
+      <div class="step-nav-direction">← 戻る</div>
+      <div class="step-nav-title">L.4 — 物流の選択指針</div>
+    </a>
+    <a class="step-nav-btn next" data-page="finale" style="border-color:var(--gold);background:rgba(201,165,92,0.05)">
+      <div class="step-nav-direction" style="color:var(--gold-bright)">✦ Volume VIII 完結</div>
       <div class="step-nav-title">XXI — The World へ</div>
     </a>
   </div>
@@ -11018,7 +11419,7 @@ body::after {
   </div>
 
   <div class="content-block">
-    <h2 class="block-title"><span class="block-num">∞</span>本書 7 巻総覧<span class="block-title-jp">— Volumes I — VII —</span></h2>
+    <h2 class="block-title"><span class="block-num">∞</span>本書 8 巻総覧<span class="block-title-jp">— Volumes I — VIII —</span></h2>
 
     <div class="arcana-grid">
       <div class="arcana-card" onclick="navigateTo('mek-overview')">
@@ -11069,6 +11470,13 @@ body::after {
         <div class="arcana-card-jp">物流の細管</div>
         <div class="arcana-card-meta"><span>4 章 · 物流芸術</span></div>
       </div>
+
+      <div class="arcana-card" onclick="navigateTo('hm-overview')">
+        <div class="arcana-card-num">VOL. VIII</div>
+        <div class="arcana-card-title">Hermit Path Tools</div>
+        <div class="arcana-card-jp">未踏の小径</div>
+        <div class="arcana-card-meta"><span>5 sec · 補助章</span></div>
+      </div>
     </div>
   </div>
 
@@ -11109,7 +11517,7 @@ body::after {
 
   <div style="margin-top:5rem;padding-top:3rem;border-top:1px solid var(--line);text-align:center;color:var(--parchment-dim);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;line-height:2">
     <p style="margin-bottom:0.5rem">— FINIS —</p>
-    <p style="font-size:0.75rem">Concatenation Industrial Arcana Codex<br>Volumes I — VII · 46 章 · 完結</p>
+    <p style="font-size:0.75rem">Concatenation Industrial Arcana Codex<br>Volumes I — VIII · 47 章 · 完結</p>
   </div>
 
   <div class="step-nav">
@@ -11170,7 +11578,8 @@ const STEP_KEYS = [
   'tfmg-step-1','tfmg-step-2','tfmg-step-3',
   'id-step-1','id-step-2','id-step-3',
   'cre-step-1','cre-step-2','cre-step-3','cre-step-4',
-  'log-step-1','log-step-2','log-step-3','log-step-4'
+  'log-step-1','log-step-2','log-step-3','log-step-4',
+  'hm-overview'
 ];
 
 function loadProgress() {
