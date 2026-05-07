@@ -10228,7 +10228,7 @@ body::after {
     <div class="step-eyebrow">L.1 — CHAPTER ONE</div>
     <h1 class="step-title"><em>Pretty Pipes</em><br>最大公約数</h1>
     <p class="step-subtitle">
-      <strong>Pretty Pipes</strong> は Concatenation で<strong>最も汎用的・最も使われる</strong>物流 mod。<strong>Item / Fluid / Gas / Energy / Universal</strong> の 5 種類のパイプがあり、Mekanism / TFMG/ Thermal すべてに対応。<strong>Filter + Speed + Stack Upgrade</strong> の3点で大概の物流が組める。
+      <strong>Pretty Pipes</strong> (Ellpeck 製) は Concatenation で<strong>最も汎用的・最も使われる</strong>アイテム物流 mod。<strong>Pipe + Pipe Connector + Filter</strong> の 3 要素で構成され、<strong>Pretty Pipes Fluids</strong> サブ mod で液体に対応。Gas / Energy / 複数次元配管はそれぞれ <strong>Mekanism Pressurized Tube / Thermal Fluxduct / Ender Tank</strong> 等の専用 mod を併用する。
     </p>
     <div class="step-meta">
       <div class="step-meta-item">
@@ -10252,48 +10252,48 @@ body::after {
   </div>
 
   <div class="content-block">
-    <h2 class="block-title"><span class="block-num">01</span>Pretty Pipes 5 種<span class="block-title-jp">— Five Pipes —</span></h2>
+    <h2 class="block-title"><span class="block-num">01</span>Pretty Pipes と Concatenation 物流の役割分担<span class="block-title-jp">— Pretty Pipes vs Other Mods —</span></h2>
 
     <table class="spec-table">
       <thead>
         <tr>
-          <th>Pipe 種別</th>
           <th>転送内容</th>
-          <th>主用途</th>
+          <th>Concatenation での標準解</th>
+          <th>備考</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Item Pipe</strong></td>
-          <td>アイテム</td>
-          <td>機械間の素材・成果物搬送</td>
+          <td><strong>アイテム</strong></td>
+          <td>Pretty Pipes (Pipe + Connector + Filter)</td>
+          <td>本章の主役。Concat で一番出番が多い</td>
         </tr>
         <tr>
-          <td><strong>Fluid Pipe</strong></td>
-          <td>流体（mB）</td>
-          <td>水・溶岩・原油・Latex</td>
+          <td><strong>流体（mB）</strong></td>
+          <td>Pretty Pipes Fluids (姉妹 mod)</td>
+          <td>水/溶岩/原油/Latex/molten_steel など</td>
         </tr>
         <tr>
-          <td><strong>Gas Pipe</strong></td>
-          <td>Mekanism 気体</td>
-          <td>O₂ / H₂ / Cl₂ / HCl など</td>
+          <td><strong>Mekanism 気体（O₂/H₂/Cl₂...）</strong></td>
+          <td>Mekanism Pressurized Tube</td>
+          <td>Pretty Pipes は気体非対応。Mekanism の専用配管</td>
         </tr>
         <tr>
-          <td><strong>Energy Pipe</strong></td>
-          <td>FE</td>
-          <td>機械給電（Mekanism Universal Cable代替）</td>
+          <td><strong>FE 電力</strong></td>
+          <td>Thermal Fluxduct (energy_duct) ↔ Mekanism Universal Cable</td>
+          <td>HighPriestess override で shapeless 相互変換可</td>
         </tr>
         <tr>
-          <td><strong>Universal Pipe</strong></td>
-          <td>全種</td>
-          <td>1 本で全部、UI が混雑する</td>
+          <td><strong>次元越え一括</strong></td>
+          <td>Ender Storage (L.3 で詳説)</td>
+          <td>frequency 同期。Item/Fluid/Energy 別チェスト</td>
         </tr>
       </tbody>
     </table>
 
     <div class="prose" style="margin-top:1.5rem">
       <p>
-        各 Pipe には<strong>各端点で個別に</strong> Filter / Speed / Stack Upgrade が装着できる。<strong>1 つの Pipe の入口面と出口面で別の動作</strong>を設定できるのが Pretty Pipes の特徴。
+        Pretty Pipes は <strong>Pipe Connector （汎用接続点）</strong>を介してネットワークを組む。Connector に <strong>Filter / Speed Upgrade</strong> を装着して挙動を制御する。<strong>1 つの Pipe の入口面と出口面で別の Filter</strong>が付けられるため、複数機械を横断する分岐ロジックが組みやすい。
       </p>
     </div>
   </div>
