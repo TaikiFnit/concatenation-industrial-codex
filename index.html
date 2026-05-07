@@ -1395,7 +1395,8 @@ body::after {
       <div class="callout callout-warning" style="margin-top: 1rem;">
         <div class="callout-label">▲ Concatenation 独自の重要事実</div>
         <div class="callout-content">
-          <strong>① <code>concatenationcore</code> mod が中継素材を提供</strong>: zinc_casing / quarry_brain / galvanized_iron / boiler / coal_generator / hydraulic_crusher 等。多くの「終端機械」は Mekanism / Thermal / RFTools の素材を <code>concatenationcore</code> パーツで結合する。<br>
+          <strong>① <code>concatenationcore</code> mod が中継素材を提供</strong>: zinc_casing / quarry_brain / galvanized_iron / alclad / altcircuit / boiler / coal_generator / hydraulic_crusher 等。多くの「終端機械」は Mekanism / Thermal / RFTools / Create の素材を <code>concatenationcore</code> パーツで結合する。<br>
+          ┗ 中核フロー: <code>create:zinc_nugget + concatenationcore:double_nugget → galvanized_iron_nugget</code>（Thermal Induction Smelter）→ <code>9× nugget + hierophant_die → galvanized_iron</code>（Thermal Press）→ <code>galvanized_iron_casing</code> 等の終端素材。Hierophant pathway 序盤でこの 2 つの Thermal 機械の解放が事実上の必須条件。<br>
           <strong>② Steel の正準ルートは TFMG の Industrial Blast Furnace + Coke Oven</strong>: <code>tfmg:industrial_blasting</code> レシピで <code>create:crushed_raw_iron</code>（または <code>minecraft:raw_iron</code>）と <code>#tfmg:flux</code> を投入し、 <code>tfmg:molten_steel</code> + <code>tfmg:molten_slag</code> + <code>tfmg:furnace_gas</code> を産出 → Casting Basin で <code>tfmg:steel_ingot</code> 化。<code>createmetallurgy:steel_ingot</code> や <code>mekanism:ingot_steel</code> も <code>forge:ingots/steel</code> タグで統一されており、TFMG ルートが最効率。Mekanism Metallurgic Infuser 経由の Steel レシピは override で非標準。<br>
           <strong>③ Osmium は OreBerries Replanted 経由</strong>: <code>oreberriesreplanted:osmium_oreberry_bush</code> を BotanyPots / 地中で育成。直接 Osmium 鉱石を採掘する標準ルートは制限されている可能性が高い。<br>
           <strong>④ パスウェイで「使えるレシピ」が変わる</strong>: 例えば <code>HighPriestessRecipes.js</code> は Mekanism Universal Cable / Digital Miner / Energized Smelter / Enriched Iron などのレシピを大量に <code>remove</code> している。最初に選ぶ初期パスウェイによって to-do が変わる。
@@ -1617,7 +1618,7 @@ body::after {
         Mekanism のエネルギー単位は内部的に <strong>Joule (J)</strong> だが、<strong>Forge Energy (FE/RF) と 1:1 で相互変換</strong>される。表示単位は Configuration で切替可能（Mekanism Joules → kJ → MJ → GJ → TJ）。
       </p>
       <p>
-        Concatenation で <strong>Universal Cable は中盤まで作れない</strong>ため、序盤は <strong>Thermal Fluxduct</strong> や <strong>Thermal Fluxduct</strong>、または <strong>Thermal Fluxduct</strong> で機械に給電するのが標準ルート。
+        Concatenation の <strong>HighPriestessRecipes.js override</strong>: Mekanism Basic Universal Cable は <code>thermal:energy_duct</code>(Thermal Fluxduct) 1個から shapeless で作れる(逆も可: Universal Cable + <code>concatenationcore:full_pentacles</code> → Energy Duct)。Advanced Universal Cable は 4×createmetallurgy:steel_ingot + 2×thermal:energy_duct + 1×basic_control_circuit → 8個。<strong>つまり Concatenation 内で Thermal Fluxduct と Mekanism Universal Cable は事実上同一資源</strong>。
       </p>
     </div>
   </div>
@@ -1847,7 +1848,7 @@ body::after {
   <div class="callout callout-arcane">
     <div class="callout-label">✦ ARCANE — Mekanism の隠された配線哲学</div>
     <div class="callout-content">
-      Mekanism のケーブル（Universal Cable）は <strong>Configurator</strong> という工具で<strong>各面ごとに「none / push / pull / both / disable」を切り替え</strong>られる。これは AE2 の Storage Bus や Pretty Pipes の Filter とは違い、<strong>機械側の出力面そのものを制御</strong>する仕様。Concatenation では Universal Cable が中盤まで使えないため、序盤は <strong>Thermal Fluxduct + Filter</strong> で代用する。Pretty Pipes の Filter UI は Mekanism より直感的。
+      Mekanism のケーブル（Universal Cable）は <strong>Configurator</strong> という工具で<strong>各面ごとに「none / push / pull / both / disable」を切り替え</strong>られる。これは AE2 の Storage Bus や Pretty Pipes の Filter とは違い、<strong>機械側の出力面そのものを制御</strong>する仕様。Concatenation では <strong>Basic Universal Cable は Thermal Fluxduct (Energy Duct) と shapeless で相互変換可能</strong>(HighPriestessRecipes.js override)、つまり序盤に Thermal Fluxduct を作れば即座に Universal Cable に転換できる。両者を使い分ける場面はほぼないが、Configurator は Mekanism Cable のみ動作する点に注意。
     </div>
   </div>
 
@@ -2055,7 +2056,7 @@ body::after {
       <li class="step-item">
         <div class="step-item-title">最低 8 個の Steel を確保</div>
         <div class="step-item-content">
-          M.3 の <strong>Energized Smelter（Steel×4 + Osmium×4 + Furnace）</strong>と <strong>Enrichment Chamber（Iron×4 + Redstone×2 + Osmium×2 + Steel×1）</strong> で計 5–9 個。残りは Cable やフレーム用に。
+          Concatenation override で M.3 の <strong>Energized Smelter は createmetallurgy:steel_ingot ×8 + thermal:machine_furnace ×1</strong> に簡略化されている。Enrichment Chamber は標準 Mekanism レシピ（要 EMI 確認）。残りは Cable やフレーム用に。
         </div>
       </li>
     </ol>
@@ -2171,7 +2172,7 @@ body::after {
             <div class="recipe-name-jp">通電炉</div>
             <div class="recipe-desc">
               <strong>dust → ingot</strong>。バニラ炉より高速・電力駆動。<br>
-              Steel×4 + Osmium×4 + Furnace×1
+              <strong>Concatenation override (HighPriestess.js)</strong>: 8× <code>createmetallurgy:steel_ingot</code> + 1× <code>thermal:machine_furnace</code> (Thermal の Redstone Furnace 中央)。<strong>純粋な Steel + Furnace の組合せ</strong>に変更。
             </div>
             <span class="recipe-link">Mekanism Wiki</span>
           </div>
@@ -2183,7 +2184,7 @@ body::after {
           <div class="recipe-image">
             <img src="images/mekanism/universal_cable.png" alt="Universal Cable (Basic)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="recipe-image-placeholder" style="display:none">
-              Basic Universal Cable<br><small>※ Concat では中盤まで作れない</small>
+              Basic Universal Cable<br><small>Concat: Thermal Fluxduct と shapeless で相互変換 (HighPriestess override)</small>
             </div>
           </div>
           <div class="recipe-info">
@@ -2191,7 +2192,7 @@ body::after {
             <div class="recipe-name-jp">汎用ケーブル</div>
             <div class="recipe-desc">
               <strong>Concatenation では Hand of Pentacles 必須に nerf</strong>。<br>
-              代替：<strong>Thermal Fluxduct</strong> / Thermal Fluxduct
+              代替/相互変換: <strong>Thermal Fluxduct (Energy Duct)</strong>
             </div>
             <span class="recipe-link">Mekanism Wiki</span>
           </div>
@@ -3490,7 +3491,7 @@ body::after {
         <strong>Meteor Compass</strong> は AE2 序盤の<strong>必須アイテム</strong>。手に持つと最寄りの<strong>未発見 Meteorite</strong>の方向を指す。隕石は地下に埋まっているか、稀に地表に露出している。<strong>方角が「下」を指したら掘り下げる</strong>合図。
       </p>
       <p>
-        Meteor Compass は <strong>Charged Certus Quartz×1 + Wood Plank×4 + Sky Stone Block×1（鶏と卵問題！）</strong>でクラフト。<strong>初回の Sky Stone は手探りで探す必要がある</strong>。Concatenation では <strong>クエスト報酬や JEI cheat 不可</strong>なので、平地バイオームを Y=30〜60 あたりで横穴掘りするのが現実的。
+        Meteor Compass の<strong>Concatenation override レシピ</strong>: <code>concatenationcore:galvanized_iron_nugget ×4 + minecraft:compass ×1</code>(<code>HierophantRecipes.js</code>)。<strong>Sky Stone を採掘する前に作れる</strong>のがpack のメリット — galvanized_iron は <code>concatenationcore</code> mod の中継アイテムで、Iron + Zinc を組み合わせるとクラフトできる。AE2 標準の「Charged Quartz + Wood Plank + Sky Stone」レシピは override されているので EMI で要確認。
       </p>
     </div>
 
@@ -3515,7 +3516,7 @@ body::after {
             <div class="recipe-name-jp">隕石コンパス</div>
             <div class="recipe-desc">
               手に持つと最寄りの未発見隕石を指す。<br>
-              <strong>Charged Quartz×4 + Wood Plank×4 + Sky Stone×1</strong>
+              <strong>Concatenation override</strong>: galvanized_iron_nugget ×4 + minecraft:compass ×1（<code>concatenationcore</code> 経由）
             </div>
             <span class="recipe-link">AE2 公式 Wiki</span>
           </div>
