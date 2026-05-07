@@ -11044,24 +11044,24 @@ body::after {
       <thead><tr><th>場面</th><th>Tinkers の使いどころ</th><th>備考</th></tr></thead>
       <tbody>
         <tr>
-          <td>序盤 Steel</td>
-          <td>Smeltery で Iron + Coal → Steel Ingot</td>
-          <td>Mekanism Infuser ルート より圧倒的に早い。Hermit に一時切替で OK</td>
+          <td>Steel ライン (TFMGの代替)</td>
+          <td>Hermit pathway で Smeltery を解放後、TFMG ライン構築まで使う繋ぎ</td>
+          <td><strong>Smeltery Controller は alloy_smelter で焼成</strong>(seared_bricks ×4 + concatenationcore:smeltery_fuel_core)。バニラ Tinkers の置くだけでは作れない</td>
         </tr>
         <tr>
           <td>2× ore doubling</td>
-          <td>Smeltery で raw_ore → 2 ingot</td>
-          <td>Mekanism Crusher 解放前のブースト。Concatenation の oreberry と組合せ最強</td>
+          <td>Smeltery で<strong>金属鉱石 → 2 ingot</strong>（raw_ore からは不可）</td>
+          <td>Foundry で raw_iron 入力は kubejs で除外。Iron 倍化は Mekanism Crusher → createmetallurgy:iron_dust が canonical</td>
         </tr>
         <tr>
           <td>武器/工具</td>
           <td>Cleaver / Crossbow / Pickaxe (modifier 自由)</td>
-          <td>後半は Mekasuit に置換するが、序盤〜中盤は Tinkers が王者</td>
+          <td>後半は Mekasuit / Atomic Disassembler に置換。多数の mekanismtools paxel 系は Hermit で remove</td>
         </tr>
         <tr>
           <td>合金</td>
-          <td>Manyullyn / Hepatizon (TConstruct alloy)</td>
-          <td>Concatenation の <code>tconstruct:cobalt_ingot</code> は TFMG / createmetallurgy の素材と<strong>kubejs で相互変換可能</strong></td>
+          <td>Manyullyn / Hepatizon / cobalt_ingot</td>
+          <td>Concatenation の <code>tconstruct:cobalt_ingot</code> は TFMG / createmetallurgy の素材と<strong>forge:ingots/* タグで相互変換可能</strong></td>
         </tr>
       </tbody>
     </table>
@@ -11098,7 +11098,12 @@ body::after {
     <div class="callout callout-arcane" style="margin-top:1rem">
       <div class="callout-label">✦ ARCANE — Tinkers と Concatenation の混血</div>
       <div class="callout-content">
-        Concatenation では <strong>Hermit pathway を一時切替</strong>することで Tinkers レシピが解放される。<strong>序盤 Steel が必要なときだけ Hermit に切替 → Smeltery で大量生産 → Hierophant に戻す</strong>のが上級プレイヤーの動き。kubejs の <code>HermitRecipes.js</code> で Tinkers の各レシピが大幅 override されているため、<strong>EMI で「Hermit なら作れる」が「Hierophant では作れない」アイテム</strong>を見極めること。
+        Concatenation では <strong>Hermit pathway を一時切替</strong>することで Tinkers レシピが解放される。kubejs の <code>HermitRecipes.js</code> で Tinkers が大幅 override されている要点:<br>
+        ◆ <strong>Smeltery Controller は <code>alloy_smelter:smelting</code> 経由</strong>: 4× <code>tconstruct:seared_bricks</code> + 1× <code>concatenationcore:smeltery_fuel_core</code> を Alloy Smelter で 350 ticks (Tier 2) または 250 ticks (Tier 3) で焼成。バニラ Tinkers のように Seared Brick を並べただけでは作れない。<br>
+        ◆ <strong>Foundry Controller も同様</strong>に Alloy Smelter 経由（scorched_bricks + concatenationcore:platinum_fuel_core）。<br>
+        ◆ <strong>Tinkers Foundry の raw_iron 入力は除外</strong>: Foundry に raw_iron を入れて 2× できない。Iron 倍化は Mekanism Crusher → createmetallurgy:iron_dust 経路に統一。<br>
+        ◆ <strong>Seared Brick の smelting/blasting も除外</strong>: 標準のかまど焼成では作れない。代わりに alloy_smelter または専用 recipe。<br>
+        ◆ 多数の Mekanism Tools（paxel 系）も remove されているので、<strong>Mekasuit / Atomic Disassembler を最終目標</strong>に据える。
       </div>
     </div>
   </div>
